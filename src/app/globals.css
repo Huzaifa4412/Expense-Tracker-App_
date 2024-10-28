@@ -1,0 +1,275 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: #ffffff;
+  --foreground: #171717;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+}
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  list-style-type: none;
+  text-decoration: none;
+  font-family: 'poppins';
+}
+
+html,
+body {
+  height: 100%;
+  width: 100%;
+}
+
+main {
+  background-color: #2B2829;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  place-items: center;
+}
+
+.container {
+  background-color: #333333;
+  width: 380px;
+  height: 700px;
+  overflow: hidden;
+  border-radius: 8px;
+  -webkit-border-radius: 8px;
+  -moz-border-radius: 8px;
+  -ms-border-radius: 8px;
+  -o-border-radius: 8px;
+  position: relative;
+}
+
+.upperPart {
+  color: #fff;
+  padding: 10px 15px;
+
+  & h1 {
+    white-space: nowrap;
+    font-size: 32px;
+    width: max-content;
+    margin: auto;
+    font-weight: 600;
+  }
+
+
+
+  & .priceContainer {
+    margin-top: 15px;
+    font-size: 20px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+
+    .amount {
+      font-size: 55px;
+      font-weight: 700;
+    }
+
+    & h2 {
+      line-height: 15px;
+      font-size: 20px;
+      font-weight: 500;
+      color: #eeeeee;
+    }
+  }
+
+  & h3 {
+    font-size: 18px;
+    font-weight: 500;
+    color: #eee;
+    margin-top: 25px;
+  }
+
+  & .transactionContainer {
+    width: 100%;
+    border-top: 2px solid #eeeeee90;
+    /* padding: 10px 0px; */
+    max-height: 310px;
+    overflow-y: auto;
+
+    &::-webkit-scrollbar {
+      width: 5px;
+
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: rgb(128, 128, 128);
+      border-radius: 10px;
+      -webkit-border-radius: 10px;
+      -moz-border-radius: 10px;
+      -ms-border-radius: 10px;
+      -o-border-radius: 10px;
+    }
+
+    &::-webkit-scrollbar-track {
+      background-color: #fff;
+    }
+
+    & .card {
+      margin-top: 10px;
+      width: 100%;
+      display: flex;
+      align-items: center;
+      height: max-content;
+      background-color: #fff;
+      color: #111;
+      position: relative;
+      height: 40px;
+
+
+      &.dataContainer {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        width: 92%;
+        position: absolute;
+        right: 0;
+        height: 100%;
+
+      }
+
+
+      & .data {
+        display: flex;
+        width: 100%;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0px 10px;
+
+      }
+
+      & .trackerCategory {
+        width: 8%;
+        color: #fff;
+        background-color: #333333;
+        font-weight: 600;
+        height: 100%;
+        display: grid;
+        place-items: center;
+
+      }
+
+    }
+  }
+}
+
+
+
+.lowerPart {
+  width: 100%;
+  height: 150px;
+  background-color: #fff;
+  position: absolute;
+  bottom: 0;
+  padding: 0px 15px;
+
+  & h3 {
+    font-size: 16px;
+    font-weight: 500;
+    font-weight: 500;
+    color: #333;
+    text-decoration: underline;
+  }
+
+  .inputContainer {
+    margin-top: 10px;
+    display: flex;
+    gap: 5px;
+
+    & input {
+      outline: none;
+      width: 100%;
+      padding: 3px 5px;
+    }
+  }
+
+  .buttonContainer {
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    padding: 8px 0px;
+    position: absolute;
+    left: 0;
+
+    & span {
+      font-size: 20px;
+    }
+  }
+
+  .buttonContainer button {
+    width: 50%;
+    height: 50px;
+    border: none;
+    font-size: 12px;
+    color: #fff;
+    margin-top: 5px;
+    font-weight: 600;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+  }
+
+  .buttonContainer button:first-child {
+    background-color: green;
+  }
+
+  .buttonContainer button:last-child {
+    background-color: rgb(241, 47, 47);
+  }
+}
+
+@media screen and (max-width:800px) {
+  .container {
+    height: 660px;
+    width: 350px;
+  }
+}
+
+@media screen and (max-width:380px) {
+  .container {
+    width: 100%;
+    height: 100%;
+    padding: auto 20px;
+  }
+
+  .upperPart {
+    & h1 {
+      font-size: 30px;
+    }
+  }
+
+  .upperPart {
+    & .priceContainer {
+      .amount {
+        font-size: 43px;
+      }
+    }
+  }
+
+  .text-sm {
+    font-size: 14px;
+    line-height: 5px;
+  }
+
+  .px-4 {
+    padding-left: 1rem;
+    padding-right: 1rem;
+    padding: 0px 5px;
+  }
+}
