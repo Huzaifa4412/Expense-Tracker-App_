@@ -22,7 +22,7 @@
   box-sizing: border-box;
   list-style-type: none;
   text-decoration: none;
-  font-family: 'poppins';
+  font-family: 'Poppins', sans-serif;
 }
 
 html,
@@ -130,6 +130,22 @@ main {
       position: relative;
       height: 40px;
 
+      &:hover .actionBtn {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .actionBtn button {
+        height: 30px;
+        width: 80px;
+        border-radius: 5px;
+        font-weight: bolder;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        -ms-border-radius: 5px;
+        -o-border-radius: 5px;
+      }
 
       &.dataContainer {
         display: flex;
@@ -155,7 +171,6 @@ main {
       & .trackerCategory {
         width: 8%;
         color: #fff;
-        background-color: #333333;
         font-weight: 600;
         height: 100%;
         display: grid;

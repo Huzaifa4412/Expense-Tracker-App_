@@ -34,6 +34,9 @@ export default function App() {
   const [expense, setExpense] = useState(
     main.length > 0 ? main[main.length - 1].expense : 0
   );
+  const [type, setType] = useState(
+    main.length > 0 ? main[main.length - 1].type : ""
+  );
 
   type MainType = {
     text: string;
@@ -41,6 +44,7 @@ export default function App() {
     total: number;
     expense: number;
     earning: number;
+    type: string;
   };
 
   // type AmountCal = {
@@ -48,11 +52,35 @@ export default function App() {
   //   expense: number;
   //   earning: number;
   // };
-  console.log(main);
+  function editHandler(
+    id: number,
+    amount: number,
+    type: string,
+    title: string
+  ) {
+    delHandler(id, amount, type);
+    setText(title);
+    setAmount(amount);
+  }
 
+  function delHandler(id: number, amount: number, type: string) {
+    const shallowCopy = [...main];
+    console.log("total", total, " Amount", amount, " Type", type);
+    if (type == "expense") {
+      setTotal(total + amount);
+      setExpense(expense - amount);
+    } else if (type == "earning") {
+      setTotal(total - amount);
+      setEarning(earning - amount);
+    } else {
+      console.log("kia yr");
+    }
+    shallowCopy.splice(id, 1);
+    setMain(shallowCopy);
+  }
   function FormHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    setMain([...main, { text, amount, total, expense, earning }]); // or setMain([text, amount]);
+    setMain([...main, { text, amount, total, expense, earning, type }]); // or setMain([text, amount]);
 
     setAmount(0);
     setText("");
@@ -74,7 +102,10 @@ export default function App() {
         amount={data.amount}
         key={index}
         number={index + 1}
-        // color="green"
+        color="green"
+        del={delHandler}
+        edit={editHandler}
+        type={main[index].type}
       />
     );
   });
@@ -152,6 +183,7 @@ export default function App() {
                 className="earning"
                 onClick={() => {
                   earningCal();
+                  setType("earning");
                 }}
               >
                 <span className="earningVal">{earning}</span>
@@ -160,6 +192,7 @@ export default function App() {
               <button
                 className="expanse"
                 onClick={() => {
+                  setType("expense");
                   expenseCal();
                 }}
               >
