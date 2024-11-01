@@ -7,9 +7,9 @@ const Card = (props: {
   number: number;
   id: number;
   color: string;
-  del: any;
+  del: (id: number, amount: number, type: string) => void;
   type: string;
-  edit: any;
+  edit: (id: number, amount: number, type: string, title: string) => void;
 }) => {
   // const colorName = props.color;
   // const color = "red";
