@@ -1,9 +1,9 @@
 "use client";
 import React, { useEffect, useState } from "react";
+import Card from "../components/Card";
 
 // Importing Font
 import { Poppins } from "next/font/google";
-import Card from "./components/Card";
 const poppins = Poppins({
   weight: ["400", "700"],
   style: ["normal", "italic"],
@@ -81,7 +81,6 @@ export default function App() {
   function FormHandler(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
     setMain([...main, { text, amount, total, expense, earning, type }]); // or setMain([text, amount]);
-
     setAmount(0);
     setText("");
   }
