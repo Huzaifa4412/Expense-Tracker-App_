@@ -46,7 +46,7 @@ const Card = (props: {
             props.del(props.id, props.amount, props.type);
           }}
         >
-          Delect
+          Delete
         </button>
       </div>
     </div>

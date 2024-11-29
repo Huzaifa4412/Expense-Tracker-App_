@@ -3,24 +3,20 @@ import React, { useEffect, useState } from "react";
 import Card from "../components/Card";
 
 // Importing Font
-import { Poppins } from "next/font/google";
-const poppins = Poppins({
-  weight: ["400", "700"],
-  style: ["normal", "italic"],
-  subsets: ["latin"],
-  display: "swap",
-});
 
 export default function App() {
-  function getDataFromLS() {
-    const data = localStorage.getItem("tracker");
-    if (data) {
-      return JSON.parse(data);
+  const [main, setMain] = useState<MainType[]>([]);
+  useEffect(() => {
+    if (typeof window !== undefined) {
+      setMain(JSON.parse(localStorage.getItem("tracker") || "[]"));
     }
-    return [];
-  }
+  }, []);
+  useEffect(() => {
+    if (typeof window !== "undefined" && window) {
+      localStorage.setItem("tracker", JSON.stringify(main));
+    }
+  }, [main]);
 
-  const [main, setMain] = useState<MainType[]>(getDataFromLS());
   const [text, setText] = useState("");
   const [amount, setAmount] = useState(
     main.length > 0 ? main[main.length - 1].amount : 0
@@ -84,9 +80,6 @@ export default function App() {
     setAmount(0);
     setText("");
   }
-  useEffect(() => {
-    localStorage.setItem("tracker", JSON.stringify(main));
-  }, [main]);
 
   const initialRender = (
     <h2 className="grid place-items-center mt-8 text-slate-300">
@@ -120,7 +113,7 @@ export default function App() {
   }
   return (
     <main>
-      <div className={`container ${poppins}`}>
+      <div className={`container`}>
         <div className="upperPart relative">
           <h1>Expense Tracker</h1>
           <div className="priceContainer">
